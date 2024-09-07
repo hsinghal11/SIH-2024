@@ -4,7 +4,7 @@ import "../styles/about.css";
 const About = () => {
   return (
     <div className="container about-body">
-      <div className="about-header">About E-Mandi</div>
+      <div className="about-header">About E-Farmlife</div>
 
       {/* cards */}
       <div className="about-content">

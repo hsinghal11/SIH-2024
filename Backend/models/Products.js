@@ -34,6 +34,10 @@ const ProductSchema = new Schema({
     type: String,
     required: true,
   },
+  type : {
+    type: String,
+    required: true,
+  },
   state: {
     type: String,
     required: true,

@@ -14,6 +14,7 @@ const Listing = () => {
   const [price, setPrice] = useState("");
   const [cat, setCat] = useState("vegetable");
   const [state, setState] = useState("");
+  const [type, setType] = useState("fresh");
   const [city, setCity] = useState("");
   const [pin, setPin] = useState("");
   const States = [
@@ -62,6 +63,9 @@ const Listing = () => {
     setCat(event.target.value);
   };
   const onNameChange = (event) => {
+    setName(event.target.value);
+  };
+  const onTypeChange = (event) => {
     setName(event.target.value);
   };
   const onDescriptionChange = (event) => {
@@ -146,6 +150,7 @@ const Listing = () => {
             price: price,
             cat: cat,
             state: state,
+            type: type,
             city: city,
             pin: pin,
             image: image,
@@ -211,6 +216,25 @@ const Listing = () => {
             ) : (
               <div class="valid-feedback">Looks good!</div>
             )}
+          </div>
+
+          <div class="col-sm-12 col-md-6 list_option">
+            <label for="validationServer01">Type</label>
+            <select
+              className="form-select is-valid"
+              id="inputGroupSelect03"
+              aria-label="Example select with button addon"
+              onChange={onTypeChange}
+              required
+            >
+              <option value="Cereals">Cereals</option>
+              <option value="Fresh">Fresh</option>
+              {/* <option value="flours">Atta & Flours</option>
+              <option value="masala">Masala & Spices</option>
+              <option value="rice">Rice & Rice products</option>
+              <option value="dal">Dal & pulses</option> */}
+            </select>
+            <div class="valid-feedback">Looks good!</div>
           </div>
 
           <div class="col-sm-12 col-md-6 list_option">

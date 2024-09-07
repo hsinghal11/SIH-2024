@@ -79,7 +79,7 @@ const Navigation = (props) => {
       >
         <Container fluid>
           <Link class="navbar-brand" to="/">
-            E-Mandi
+            E-Farmlife
           </Link>
           <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
           <Navbar.Offcanvas
@@ -89,7 +89,7 @@ const Navigation = (props) => {
           >
             <Offcanvas.Header closeButton>
               <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>
-                E-Mandi
+                E-Farmlife
               </Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body className="off-canvas-body">

@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import "../styles/signup.css";
+import "../styles/signup.css"; // Ensure this contains the necessary CSS
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import BASE_URL from "../Server/base_url";
 
-const Signup = ({ loadUser, onRouteChange }) => {
+const Signup = () => {
   const [role, setRole] = useState("farmer");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -39,10 +39,12 @@ const Signup = ({ loadUser, onRouteChange }) => {
   const onPinChange = (event) => {
     setPin(event.target.value);
   };
+
   const navigate = useNavigate();
   const handleClick = () => {
     navigate("/");
   };
+
   const onSubmitSignUp = async () => {
     const response = await fetch(`${BASE_URL}/api/auth/createuser`, {
       method: "POST",
@@ -58,8 +60,10 @@ const Signup = ({ loadUser, onRouteChange }) => {
         pin: pin,
       }),
     });
+
     const json = await response.json();
     console.log(json);
+
     if (json.success) {
       localStorage.setItem("token", json.authtoken);
       localStorage.setItem("role", json.role);
@@ -67,53 +71,16 @@ const Signup = ({ loadUser, onRouteChange }) => {
     } else if (json === "Exist") {
       Swal.fire({
         icon: "warning",
-        title: "User ALready Exist",
-        text: "",
-      });
-    } else if (json.error === "pin") {
-      Swal.fire({
-        icon: "warning",
-        title: "Give a valid PIN code",
-        text: "",
-      });
-    } else if (json.error === "phno") {
-      Swal.fire({
-        icon: "warning",
-        title: "Give a valid Phone No",
-        text: "",
-      });
-    } else if (json.error === "state") {
-      Swal.fire({
-        icon: "warning",
-        title: "Give a valid state Name",
-        text: "",
-      });
-    } else if (json.error === "email") {
-      Swal.fire({
-        icon: "warning",
-        title: "Give a valid Email",
-        text: "",
-      });
-    } else if (json.error === "password") {
-      Swal.fire({
-        icon: "warning",
-        title: "Give a valid Password",
-        text: "",
-      });
-    } else if (json.error === "name") {
-      Swal.fire({
-        icon: "warning",
-        title: "Give a valid Name",
-        text: "",
+        title: "User Already Exist",
       });
     } else {
       Swal.fire({
         icon: "warning",
         title: "Invalid Credentials",
-        text: "",
       });
     }
   };
+
   return (
     <div className="container whole-body">
       <div className="form-container-signup">
@@ -132,7 +99,7 @@ const Signup = ({ loadUser, onRouteChange }) => {
         </div>
 
         <div className="input-group">
-          <label for="username">Name</label>
+          <label htmlFor="username">Name</label>
           <input
             type="text"
             name="username"
@@ -141,29 +108,31 @@ const Signup = ({ loadUser, onRouteChange }) => {
             onChange={onNameChange}
           />
         </div>
+
         <div className="input-group">
-          <label for="username">Phone Number</label>
+          <label htmlFor="phno">Phone Number</label>
           <input
             type="text"
-            name="username"
-            id="username"
+            name="phno"
+            id="phno"
             placeholder=""
             onChange={onPhnoChange}
           />
         </div>
 
         <div className="input-group">
-          <label for="email">Email</label>
+          <label htmlFor="email">Email</label>
           <input
             type="text"
-            name="username"
-            id="username"
+            name="email"
+            id="email"
             placeholder=""
             onChange={onEmailChange}
           />
         </div>
+
         <div className="input-group">
-          <label for="password">Password</label>
+          <label htmlFor="password">Password</label>
           <input
             type="password"
             name="password"
@@ -172,32 +141,67 @@ const Signup = ({ loadUser, onRouteChange }) => {
             onChange={onPasswordChange}
           />
         </div>
+
         <div className="input-group">
-          <label for="username">State</label>
-          <input
-            type="text"
-            name="username"
-            id="username"
-            placeholder=""
+          {/* <label htmlFor="state">State</label> */}
+          
+          <select
+            className="form-select"
+            id="state"
             onChange={onStateChange}
-          />
+            value={state}
+          >
+            <option value="" disabled>
+              Select your state
+            </option>
+            <option value="Andhra Pradesh">Andhra Pradesh</option>
+            <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+            <option value="Assam">Assam</option>
+            <option value="Bihar">Bihar</option>
+            <option value="Chhattisgarh">Chhattisgarh</option>
+            <option value="Goa">Goa</option>
+            <option value="Gujarat">Gujarat</option>
+            <option value="Haryana">Haryana</option>
+            <option value="Himachal Pradesh">Himachal Pradesh</option>
+            <option value="Jharkhand">Jharkhand</option>
+            <option value="Karnataka">Karnataka</option>
+            <option value="Kerala">Kerala</option>
+            <option value="Madhya Pradesh">Madhya Pradesh</option>
+            <option value="Maharashtra">Maharashtra</option>
+            <option value="Manipur">Manipur</option>
+            <option value="Meghalaya">Meghalaya</option>
+            <option value="Mizoram">Mizoram</option>
+            <option value="Nagaland">Nagaland</option>
+            <option value="Odisha">Odisha</option>
+            <option value="Punjab">Punjab</option>
+            <option value="Rajasthan">Rajasthan</option>
+            <option value="Sikkim">Sikkim</option>
+            <option value="Tamil Nadu">Tamil Nadu</option>
+            <option value="Telangana">Telangana</option>
+            <option value="Tripura">Tripura</option>
+            <option value="Uttar Pradesh">Uttar Pradesh</option>
+            <option value="Uttarakhand">Uttarakhand</option>
+            <option value="West Bengal">West Bengal</option>
+          </select>
         </div>
+
         <div className="input-group">
-          <label for="username">City</label>
+          <label htmlFor="city">City</label>
           <input
             type="text"
-            name="username"
-            id="username"
+            name="city"
+            id="city"
             placeholder=""
             onChange={onCityChange}
           />
         </div>
+
         <div className="input-group">
-          <label for="username">PIN code</label>
+          <label htmlFor="pin">PIN code</label>
           <input
             type="text"
-            name="username"
-            id="username"
+            name="pin"
+            id="pin"
             placeholder=""
             onChange={onPinChange}
           />
@@ -208,7 +212,7 @@ const Signup = ({ loadUser, onRouteChange }) => {
         </button>
         <p className="signup">
           Already have an account?
-          <Link rel="noopener noreferrer" to="/login" class="">
+          <Link to="/login" className="">
             {" "}
             Log in
           </Link>

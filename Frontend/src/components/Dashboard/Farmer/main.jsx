@@ -10,6 +10,7 @@ import Inventory from "./inventory";
 import Feedback from "./feedback";
 import Setting from "./setting";
 import Dashboard from "./dashboard";
+import ProfileWithPieChart from "../../ProfileWithPieChart";
 import { FaHistory } from "react-icons/fa";
 
 import {
@@ -90,6 +91,12 @@ function Main() {
           <li className="sidebar-list-item" onClick={onHome}>
             <FaHome className="icon" /> Home
           </li>
+          <li
+            className="sidebar-list-item"
+            onClick={() => handleOptionClick("ProfileWithPieChart")}
+          >
+            <BsFillGrid3X3GapFill className="icon" /> Analytics
+          </li>
           {/* <li
             className="sidebar-list-item"
             onClick={() => handleOptionClick("dashboard")}
@@ -150,6 +157,8 @@ function Main() {
         <Feedback />
       ) : option === "dashboard" ? (
         <Dashboard />
+      ) : option === "ProfileWithPieChart" ? (
+        <ProfileWithPieChart />
       ) : option === "history" ? (
         <History />
       ) : (

@@ -19,6 +19,7 @@ router.post("/listing", fetchUser, async (req, res) => {
       description: req.body.description,
       price: req.body.price,
       cat: req.body.cat,
+      type: req.body.type,
       state: user.state,
       city: user.city,
       pin: user.pin,

@@ -10,7 +10,7 @@ app.use(cors());
 app.use(express.json());
 
 //Port No.
-const port = process.env.PORT;
+const port = 4000;
 //Routes
 
 //Authentication

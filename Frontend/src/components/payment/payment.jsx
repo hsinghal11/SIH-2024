@@ -18,56 +18,56 @@ const Checkout = () => {
   };
 
   const onContinue = async () => {
-    // try {
-    //   let products = [];
-    //   data.forEach((item) => {
-    //     const updatedPrice = shipping ? item.price + 5 : item.price;
-    //     products.push({
-    //       productId: item.productId,
-    //       productName: item.productName,
-    //       price: updatedPrice,
-    //       quantity: item.quantity,
-    //       description: item.description,
-    //       farmer_id: item.farmer_id,
-    //       image: item.image,
-    //       shipping: shipping,
-    //     });
-    //   });
-    //   const response = await fetch("http://localhost:4000/api/order/place", {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //       "auth-token": localStorage.getItem("token"),
-    //     },
-    //     body: JSON.stringify({
-    //       price: data.price,
-    //       cat: data.cat,
-    //       buyer_id: data.buyer_id,
-    //       buyerName: data.buyerName,
-    //       date: data.date,
-    //       products: products,
-    //     }),
-    //   });
-    //   const json = await response.json();
-    //   console.log(json);
-    //   if (json.success) {
-    //     Swal.fire({
-    //       icon: "success",
-    //       title: "Order Placed",
-    //       showConfirmButton: false,
-    //       timer: 1500,
-    //     });
-    //     navigate("/");
-    //   } else {
-    //     Swal.fire({
-    //       icon: "warning",
-    //       title: "Not Listed",
-    //       text: "",
-    //     });
-    //   }
-    // } catch (error) {
-    //   console.log(error);
-    // }
+    try {
+      let products = [];
+      data.forEach((item) => {
+        const updatedPrice = shipping ? item.price + 5 : item.price;
+        products.push({
+          productId: item.productId,
+          productName: item.productName,
+          price: updatedPrice,
+          quantity: item.quantity,
+          description: item.description,
+          farmer_id: item.farmer_id,
+          image: item.image,
+          shipping: shipping,
+        });
+      });
+      const response = await fetch("http://localhost:4000/api/order/place", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "auth-token": localStorage.getItem("token"),
+        },
+        body: JSON.stringify({
+          price: data.price,
+          cat: data.cat,
+          buyer_id: data.buyer_id,
+          buyerName: data.buyerName,
+          date: data.date,
+          products: products,
+        }),
+      });
+      const json = await response.json();
+      console.log(json);
+      if (json.success) {
+        Swal.fire({
+          icon: "success",
+          title: "Order Placed",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        navigate("/");
+      } else {
+        Swal.fire({
+          icon: "warning",
+          title: "Not Listed",
+          text: "",
+        });
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
