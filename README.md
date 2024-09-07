@@ -1,13 +1,8 @@
 # E-Mandi
 A E-Commerce website made with MERN-stack. we primarily have two roles: Farmer and Buyer.
 
-
-<img width="1280" alt="Screenshot 2024-06-01 at 12 33 41 AM" src="https://github.com/Ezio7777/E-Mandi/assets/111626550/5ae2b3e9-a9b7-4a60-9782-6e5505170b58">
-
 HOME PAGE
 <img width="1280" alt="Screenshot 2024-06-01 at 1 13 08 PM" src="https://github.com/Ezio7777/E-Mandi/assets/111626550/c6e5c515-96e4-4eb9-bb69-e26e0459fcb2">
-
-
 
 LOG IN Page
 
